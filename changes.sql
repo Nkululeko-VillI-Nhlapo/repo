@@ -22,3 +22,7 @@ Capitalizing element symbols and adjusting atomic mass
 UPDATE elements SET symbol = initcap(symbol);
 ALTER TABLE properties ALTER COLUMN atomic_mass TYPE DECIMAL;
 UPDATE properties SET atomic_mass = TRIM(TRAILING '0' FROM atomic_mass::TEXT)::DECIMAL;
+Deleting non-existent element with atomic number 1000
+DELETE FROM properties WHERE atomic_number = 1000;
+DELETE FROM elements WHERE atomic_number = 1000;
+DELETE FROM elements WHERE atomic_number = 1000;
