@@ -18,3 +18,7 @@ UPDATE properties SET type_id = (SELECT type_id FROM types WHERE types.type = pr
 ALTER TABLE properties ALTER COLUMN type_id SET NOT NULL;
 ALTER TABLE properties ADD CONSTRAINT fk_type_id FOREIGN KEY (type_id) REFERENCES types(type_id);
 ALTER TABLE properties DROP COLUMN type;
+Capitalizing element symbols and adjusting atomic mass
+UPDATE elements SET symbol = initcap(symbol);
+ALTER TABLE properties ALTER COLUMN atomic_mass TYPE DECIMAL;
+UPDATE properties SET atomic_mass = TRIM(TRAILING '0' FROM atomic_mass::TEXT)::DECIMAL;
