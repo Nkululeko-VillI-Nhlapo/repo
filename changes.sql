@@ -26,3 +26,7 @@ Deleting non-existent element with atomic number 1000
 DELETE FROM properties WHERE atomic_number = 1000;
 DELETE FROM elements WHERE atomic_number = 1000;
 DELETE FROM elements WHERE atomic_number = 1000;
+INSERT INTO elements (atomic_number, name, symbol) VALUES (9, 'Fluorine', 'F');
+INSERT INTO properties (atomic_number, atomic_mass, melting_point_celsius, boiling_point_celsius, type_id) VALUES (9, 18.998, -220, -188.1, (SELECT type_id FROM types WHERE type = 'nonmetal'));
+INSERT INTO elements (atomic_number, name, symbol) VALUES (10, 'Neon', 'Ne');
+INSERT INTO properties (atomic_number, atomic_mass, melting_point_celsius, boiling_point_celsius, type_id) VALUES (10, 20.18, -248.6, -246.1, (SELECT type_id FROM types WHERE type = 'nonmetal'));
