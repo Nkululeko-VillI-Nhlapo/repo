@@ -13,3 +13,8 @@ ALTER TABLE elements ALTER COLUMN name SET NOT NULL;
 Creating and populating types table
 CREATE TABLE types (type_id SERIAL PRIMARY KEY, type VARCHAR NOT NULL);
 INSERT INTO types (type) VALUES ('metal'), ('nonmetal'), ('metalloid');
+ALTER TABLE properties ADD COLUMN type_id INT;
+UPDATE properties SET type_id = (SELECT type_id FROM types WHERE types.type = properties.type);
+ALTER TABLE properties ALTER COLUMN type_id SET NOT NULL;
+ALTER TABLE properties ADD CONSTRAINT fk_type_id FOREIGN KEY (type_id) REFERENCES types(type_id);
+ALTER TABLE properties DROP COLUMN type;
