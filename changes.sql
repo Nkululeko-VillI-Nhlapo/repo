@@ -10,3 +10,6 @@ ALTER TABLE elements ADD CONSTRAINT unique_symbol UNIQUE (symbol);
 ALTER TABLE elements ADD CONSTRAINT unique_name UNIQUE (name);
 ALTER TABLE elements ALTER COLUMN symbol SET NOT NULL;
 ALTER TABLE elements ALTER COLUMN name SET NOT NULL;
+Creating and populating types table
+CREATE TABLE types (type_id SERIAL PRIMARY KEY, type VARCHAR NOT NULL);
+INSERT INTO types (type) VALUES ('metal'), ('nonmetal'), ('metalloid');
